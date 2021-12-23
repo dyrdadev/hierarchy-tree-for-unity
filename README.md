@@ -2,7 +2,7 @@
 
 > 🧪 **EXPERIMENTAL** This experimental project is still under development. It may be unstable. It is not optimized and largely untested . Do **not** use this project in critical projects.
 
-A simple package that renders a tree view in the project hierarchy.
+A simple package that renders a tree view in Unity's project hierarchy.
 
 ## Install the Package
 
