@@ -17,7 +17,7 @@ namespace DyrdaDev.ForUnity.Hierarchy
             sibling
         }
 
-        static SceneGraphTree()
+        static HierarchyTree()
         {
             EditorApplication.hierarchyWindowItemOnGUI += DrawHierarchyTree;
         }
