@@ -9,7 +9,7 @@ A simple package that renders a tree view in the project hierarchy.
 You have two options to install the package with unity's [package manager](https://docs.unity3d.com/Manual/PackagesList.html):
 
 1. **Installing from a Git URL using the Package Manager window.** Open the Package Manager window (Window -> Package Manager). Click "+", then "Add package from git URL" and enter the git URL of this repository ```https://github.com/dyrdadev/hierarchy-tree-for-unity.git```. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
-2. **Installing a local package.** as described [here](https://docs.unity3d.com/Manual/upm-ui-local.html).
+2. **Installing a local package** as described [here](https://docs.unity3d.com/Manual/upm-ui-local.html).
 
 ## License
 
