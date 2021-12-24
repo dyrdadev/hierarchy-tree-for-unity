@@ -8,7 +8,7 @@ namespace DyrdaDev.ForUnity.Hierarchy
     {
         private static float edgeWidth = 1.0f;
         private static Color edgeColor = new Color(0.46f, 0.46f, 0.46f);
-        private static Color highlightedEdgeColor = new Color(0.239f, 0.5f, 0.874f);
+        private static Color highlightedEdgeColor = new Color(0.49f, 0.678f, 0.952f);
 
         private enum EdgeType
         {
