@@ -4,16 +4,17 @@
 
 > 🧪 **EXPERIMENTAL** This experimental project is still under development. It may be unstable. It is not optimized and largely untested . Do **not** use this project in critical projects.
 
-This package renders a tree view in Unity's project hierarchy. Just add it to your project as described below and that's all. No further steps needed.
+This package renders a tree view in Unity's project hierarchy. Just add it to your project as described below and that's all. No further steps are required.
 
 ## Install the Package
 
-You have two options to install the package with unity's [package manager](https://docs.unity3d.com/Manual/PackagesList.html):
+I recommend **installing this package from a Git URL using the Package Manager window.** For this, open the Package Manager window (Window -> Package Manager), click "+", then "Add package from git URL" and enter the git URL of this repository: ```https://github.com/dyrdadev/hierarchy-tree-for-unity.git```. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
 
-1. **Installing from a Git URL using the Package Manager window.** Open the Package Manager window (Window -> Package Manager). Click "+", then "Add package from git URL" and enter the git URL of this repository ```https://github.com/dyrdadev/hierarchy-tree-for-unity.git```. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
-2. **Installing from a Git URL using the manifest.json.** You can add a new entry to the manifest.json file in the ``Packages`` folder of your unity project: ```"dev.dyrda.hierarchy-tree-for-unity": "https://github.com/dyrdadev/hierarchy-tree-for-unity.git"```. You can find more information [here](https://docs.unity3d.com/Manual/upm-git.html).
-3. **Installing a local package using the Package Manager window.** Open the Package Manager window. Click "+", then "Add package from disk". You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-local.html).
-4. **Installing a local package manually.** To install a local package, download this repository, navigate to the ``Packages`` folder of your unity project, create a new folder ``<Your Unity Project>/Packages/dev.dyrda.hierarchy-tree-for-unity`` and copy the content to this folder.
+If that doesn't work for you, there are other options:
+
+1. **Installing from a Git URL using the manifest.json.** You can add a new entry to the manifest.json file in the ``Packages`` folder of your unity project: ```"dev.dyrda.hierarchy-tree-for-unity": "https://github.com/dyrdadev/hierarchy-tree-for-unity.git"```. You can find more information [here](https://docs.unity3d.com/Manual/upm-git.html).
+2. **Installing a local package using the Package Manager window.** Download this package, open the Package Manager window, click "+", then "Add package from disk" and select the downloaded package. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-local.html).
+3. **Installing a local package manually.** To install a local package, download this repository, navigate to the ``Packages`` folder of your unity project, create a new folder ``<Your Unity Project>/Packages/dev.dyrda.hierarchy-tree-for-unity`` and copy the content to this folder.
 
 ## License
 
