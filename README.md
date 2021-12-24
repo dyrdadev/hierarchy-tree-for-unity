@@ -1,7 +1,5 @@
 # Hierarchy Tree for Unity
 
-> A simple package that renders a tree view in Unity's project hierarchy.
-
 > 🧪 **EXPERIMENTAL** This experimental project is still under development. It may be unstable. It is not optimized and largely untested . Do **not** use this project in critical projects.
 
 This package renders a tree view in Unity's project hierarchy. Just add it to your project as described below and that's all. No further steps are required.
