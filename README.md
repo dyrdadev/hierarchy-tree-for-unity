@@ -2,7 +2,7 @@
 
 > 🧪 **EXPERIMENTAL** This experimental project is still under development. It may be unstable. It is not optimized and largely untested . Do **not** use this project in critical projects.
 
-This package renders a tree view in Unity's project hierarchy. Just add it to your project as described below and that's all. No further steps are required.
+This package renders a simple tree view in Unity's hierarchy window. Just add it to your project as described below and that's all – no further steps required.
 
 <p align=center>
     <br>
