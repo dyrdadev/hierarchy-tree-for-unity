@@ -4,6 +4,17 @@
 
 This package renders a tree view in Unity's project hierarchy. Just add it to your project as described below and that's all. No further steps are required.
 
+<p align=center>
+    <br>
+    <br>
+    <a href="./README.md">
+        <img src="./Media/hierarchy_tree_demo_400.gif" alt="Demo video of the hierarchy tree package-"/>
+    </a>
+    <br>
+    <br>
+    <br>
+</p>
+
 ## Install the Package
 
 I recommend **installing this package from a Git URL using the Package Manager window.** For this, open the Package Manager window (Window -> Package Manager), click "+", then "Add package from git URL" and enter the git URL of this repository: ```https://github.com/dyrdadev/hierarchy-tree-for-unity.git```. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
