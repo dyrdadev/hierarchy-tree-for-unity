@@ -17,13 +17,11 @@ This package renders a tree view in Unity's hierarchy window. Just add it to you
 
 ## Install the Package
 
-I recommend **installing this package from a Git URL using the Package Manager window.** For this, open the Package Manager window (Window -> Package Manager), click "+", then "Add package from git URL" and enter the git URL of this repository: ```https://github.com/dyrdadev/hierarchy-tree-for-unity.git```. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
+I recommend **to install this package from a Git URL using the Package Manager window.** This involves the following steps:
 
-If that doesn't work for you, there are other options:
-
-- **Installing from a Git URL using the manifest.json.** You can add a new entry to the manifest.json file in the ``Packages`` folder of your unity project: ```"dev.dyrda.hierarchy-tree-for-unity": "https://github.com/dyrdadev/hierarchy-tree-for-unity.git"```. You can find more information [here](https://docs.unity3d.com/Manual/upm-git.html).
-- **Installing a local package using the Package Manager window.** Download this package, open the Package Manager window, click "+", then "Add package from disk" and select the downloaded package. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-local.html).
-- **Installing a local package manually.** To install a local package, download this repository, navigate to the ``Packages`` folder of your unity project, create a new folder ``<Your Unity Project>/Packages/dev.dyrda.hierarchy-tree-for-unity`` and copy the content to this folder.
+1. Open the Package Manager window in your Unity editor (Window ➜ Package Manager)
+2. Click "+" in the upper left corner ➜ "Add package from git URL" 
+4. Enter the Git URL of the latest release: ```https://github.com/dyrdadev/hierarchy-tree-for-unity.git#0.0.2```. You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
 
 ## License
 
@@ -31,7 +29,7 @@ This package is licensed under a MIT license. See the [LICENSE](/LICENSE.md) fil
 
 ## Contribute
 
-This project was created by [Daniel Dyrda](https://dyrda.io).
+This project was created by [Daniel Dyrda](https://dyrda.page).
 
 > Daniel: _If you want to support me and my projects, you can follow me on [github (DyrdaDev)](https://github.com/DyrdaDev) and [twitter (@daniel_dyrda)](https://twitter.com/daniel_dyrda). Just come by and say hello, I would love to hear how you use the project._
 
