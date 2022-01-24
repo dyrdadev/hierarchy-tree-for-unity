@@ -25,7 +25,7 @@ I recommend **to install this package from a Git URL using the Package Manager w
 
 ## License
 
-This package is licensed under a MIT license. See the [LICENSE](/LICENSE.md) file for details. 
+This package is licensed under an MIT license. See the [LICENSE](/LICENSE.md) file for details. 
 
 ## Contribute
 
