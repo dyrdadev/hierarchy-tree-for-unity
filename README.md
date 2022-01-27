@@ -1,6 +1,6 @@
 # Hierarchy Tree for Unity
 
-> 🧪 **EXPERIMENTAL** This experimental project is still under development. It may be unstable. It is not optimized and largely untested. Do **not** use this project in critical projects.
+> 🧪 **EXPERIMENTAL** This experimental project is still under development, so it may be unstable. It is not optimized and is largely untested. Do **not** use this project in critical projects.
 
 This package renders a tree view in Unity's hierarchy window. Just add it to your project as described below, and that's all – no further steps required.
 
@@ -17,7 +17,7 @@ This package renders a tree view in Unity's hierarchy window. Just add it to you
 
 ## Install the Package
 
-I recommend **to install this package from a Git URL using the Package Manager window.** This involves the following steps:
+I recommend **installing this package from a Git URL using the Package Manager window.** This involves the following steps:
 
 1. Open the Package Manager window in your Unity editor (Window ➜ Package Manager)
 2. Click "+" in the upper left corner ➜ "Add package from git URL" 
@@ -33,6 +33,6 @@ This package is licensed under an MIT license. See the [LICENSE](/LICENSE.md) fi
 
 This project was created by [Daniel Dyrda](https://dyrda.page).
 
-> Daniel: _If you want to support me and my projects, you can follow me on [github (DyrdaDev)](https://github.com/DyrdaDev) and [twitter (@daniel_dyrda)](https://twitter.com/daniel_dyrda). Just come by and say hello, I would love to hear how you are using the project._
+> Daniel: _If you want to support me and my projects, you can follow me on [GitHub (DyrdaDev)](https://github.com/DyrdaDev) and [Twitter (@daniel_dyrda)](https://twitter.com/daniel_dyrda). Just come by and say hello, I would love to hear how you are using these assets in a project._
 
-If you want to contribute to this project, you are welcome to do so. Just write me and we will find a way to collaborate.
+If you want to contribute to this project, you are welcome to do so. Just write to me and we will find a way to collaborate.
