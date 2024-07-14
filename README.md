@@ -25,6 +25,9 @@ I recommend **installing this package from a Git URL using the Package Manager w
 
 > You can find more information [here](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
 
+## Customization
+The tree can be customized or disabled under `Edit > Preferences... > Hierarchy > Hierarchy Tree`.
+
 ## License
 
 This package is licensed under an MIT license. See the [LICENSE](/LICENSE.md) file for details. 
