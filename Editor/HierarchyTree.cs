@@ -133,7 +133,6 @@ namespace DyrdaDev.ForUnity.Hierarchy
                         referenceTransform = referenceTransform.parent;
                         currentDistance++;
                     }
-                    
                 }
                 // Draw root nodes
                 else if (HierarchyTreeSettings.instance.RenderRootEdge)
