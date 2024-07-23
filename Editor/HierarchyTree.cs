@@ -134,7 +134,9 @@ namespace DyrdaDev.ForUnity.Hierarchy
                         currentDistance++;
                     }
                     
-                }else if (HierarchyTreeSettings.instance.RenderRootEdge)
+                }
+                // Draw root nodes
+                else if (HierarchyTreeSettings.instance.RenderRootEdge)
                 {
                     bool isHighlighted = Selection.activeTransform != null
                         && (Selection.activeTransform.IsChildOf(go.transform) || go.transform == Selection.activeTransform);
