@@ -1,6 +1,6 @@
 {
   "name": "dev.dyrda.hierarchy-tree-for-unity",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "displayName": "Hierarchy Tree",
   "description": "Hierarchy Tree renders a tree view in the project hierarchy.",
   "unity": "2019.1",

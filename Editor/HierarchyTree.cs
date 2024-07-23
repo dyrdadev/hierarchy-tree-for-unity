@@ -6,10 +6,6 @@ namespace DyrdaDev.ForUnity.Hierarchy
     [InitializeOnLoad]
     internal class HierarchyTree
     {
-        private static float edgeWidth = 1.0f;
-        private static Color edgeColor = new Color(0.46f, 0.46f, 0.46f);
-        private static Color highlightedEdgeColor = new Color(0.49f, 0.678f, 0.952f);
-
         private enum EdgeType
         {
             middleChild,
@@ -26,11 +22,11 @@ namespace DyrdaDev.ForUnity.Hierarchy
         {
             if (highlighted)
             {
-                return highlightedEdgeColor;
+                return HierarchyTreeSettings.instance.HighlightedEdgeColor;
             }
             else
             {
-                return edgeColor;
+                return HierarchyTreeSettings.instance.EdgeColor;
             }
         }
 
@@ -41,21 +37,29 @@ namespace DyrdaDev.ForUnity.Hierarchy
 
         private static void DrawFullVerticalEdgeSegment(Rect rect, int graphDistance, bool highlighted)
         {
-            EditorGUI.DrawRect(new Rect(CalculateRectXValue(rect, graphDistance), rect.y, edgeWidth, rect.height),
-                GetColor(highlighted));
+            EditorGUI.DrawRect(new Rect(CalculateRectXValue(rect, graphDistance), rect.y,
+                HierarchyTreeSettings.instance.EdgeWidth, rect.height), GetColor(highlighted));
         }
 
         private static void DrawHalfVerticalEdgeSegment(Rect rect, int graphDistance, bool highlighted)
         {
-            EditorGUI.DrawRect(new Rect(CalculateRectXValue(rect, graphDistance), rect.y, edgeWidth, rect.height / 2),
-                GetColor(highlighted));
+            EditorGUI.DrawRect(new Rect(CalculateRectXValue(rect, graphDistance), rect.y,
+                HierarchyTreeSettings.instance.EdgeWidth, rect.height / 2), GetColor(highlighted));
         }
 
         private static void DrawHorizontalEdgeSegment(Rect rect, int graphDistance, bool highlighted)
         {
             EditorGUI.DrawRect(
                 new Rect(CalculateRectXValue(rect, graphDistance), rect.y + rect.height / 2, rect.height / 2,
-                    edgeWidth),
+                    HierarchyTreeSettings.instance.EdgeWidth),
+                GetColor(highlighted));
+        }
+
+        private static void DrawExtendingHorizontalEdgeSegment(Rect rect, int graphDistance, bool highlighted)
+        {
+            EditorGUI.DrawRect(
+                new Rect(CalculateRectXValue(rect, graphDistance) - (rect.height - 2) / 2, rect.y + rect.height / 2,
+                    rect.height / 2, HierarchyTreeSettings.instance.EdgeWidth),
                 GetColor(highlighted));
         }
 
@@ -79,36 +83,27 @@ namespace DyrdaDev.ForUnity.Hierarchy
 
         private static void DrawHierarchyTree(int instanceID, Rect selectionRect)
         {
+            if (!HierarchyTreeSettings.instance.Enabled)
+            {
+                return;
+            }
             var go = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 
             if (go != null)
             {
-                // Draw children (
+                // Draw children
                 if (go.transform.parent != null)
                 {
-                    if (go.transform.GetSiblingIndex() < go.transform.parent.childCount - 1)
+                    bool isHighlighted = Selection.activeTransform != null
+                        && go.transform.parent.IsChildOf(Selection.activeTransform);
+                    EdgeType edgeType = go.transform.GetSiblingIndex() < go.transform.parent.childCount - 1 
+                        ? EdgeType.middleChild : EdgeType.lastChild;
+
+                    DrawHierarchyEdge(edgeType, isHighlighted, 0, selectionRect);
+
+                    if (go.transform.childCount == 0)
                     {
-                        if (Selection.activeTransform != null &&
-                            go.transform.parent.IsChildOf(Selection.activeTransform))
-                        {
-                            DrawHierarchyEdge(EdgeType.middleChild, true, 0, selectionRect);
-                        }
-                        else
-                        {
-                            DrawHierarchyEdge(EdgeType.middleChild, false, 0, selectionRect);
-                        }
-                    }
-                    else
-                    {
-                        if (Selection.activeTransform != null &&
-                            go.transform.parent.IsChildOf(Selection.activeTransform))
-                        {
-                            DrawHierarchyEdge(EdgeType.lastChild, true, 0, selectionRect);
-                        }
-                        else
-                        {
-                            DrawHierarchyEdge(EdgeType.lastChild, false, 0, selectionRect);
-                        }
+                        DrawExtendingHorizontalEdgeSegment(selectionRect, -1, isHighlighted);
                     }
 
                     var referenceTransform = go.transform.parent;
@@ -119,15 +114,10 @@ namespace DyrdaDev.ForUnity.Hierarchy
                     {
                         if (referenceTransform.GetSiblingIndex() < referenceTransform.parent.childCount - 1)
                         {
-                            if (Selection.activeTransform != null &&
-                                referenceTransform.parent.IsChildOf(Selection.activeTransform))
-                            {
-                                DrawHierarchyEdge(EdgeType.sibling, true, currentDistance, selectionRect);
-                            }
-                            else
-                            {
-                                DrawHierarchyEdge(EdgeType.sibling, false, currentDistance, selectionRect);
-                            }
+                            isHighlighted = Selection.activeTransform != null
+                                && referenceTransform.parent.IsChildOf(Selection.activeTransform);
+
+                            DrawHierarchyEdge(EdgeType.sibling, isHighlighted, currentDistance, selectionRect);
                         }
 
                         referenceTransform = referenceTransform.parent;
