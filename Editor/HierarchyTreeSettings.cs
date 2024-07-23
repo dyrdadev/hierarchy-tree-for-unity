@@ -11,6 +11,8 @@ namespace DyrdaDev.ForUnity.Hierarchy
         public bool Enabled {get; private set;} = true;
 
         [field: SerializeField]
+        public bool RenderRootEdge {get; private set;} = true;
+        [field: SerializeField]
         public float EdgeWidth {get; private set;} = 1.0f;
         [field: SerializeField]
         public Color EdgeColor {get; private set;} =  new Color(0.46f, 0.46f, 0.46f);
@@ -20,12 +22,13 @@ namespace DyrdaDev.ForUnity.Hierarchy
         [SettingsProvider]
         public static SettingsProvider CreateHierarchyTreeSettingsProvider()
         {
-            var keywords = new string[]{"Hierarchy", "Tree", "Edge Width", "Edge Color", "Highlighted Edge Color"};
+            var keywords = new string[]{"Hierarchy", "Tree", "Render Root Edge", "Edge Width", "Edge Color", "Highlighted Edge Color"};
 
             return new SettingsProvider("Preferences/Hierarchy/Hierarchy Tree", SettingsScope.User, keywords)
             {
                 guiHandler = (searchContext) => {
                     instance.SetEnabled(EditorGUILayout.Toggle("Active", instance.Enabled));
+                    instance.SetRenderRootEdge(EditorGUILayout.Toggle("Render Root Edge", instance.RenderRootEdge));
                     instance.SetEdgeWidth(EditorGUILayout.Slider("Edge Width", instance.EdgeWidth, 1f, 6f));
                     instance.SetEdgeColor(EditorGUILayout.ColorField("Edge Color", instance.EdgeColor));
                     instance.SetHighlightEdgeColor(EditorGUILayout.ColorField(
@@ -47,6 +50,13 @@ namespace DyrdaDev.ForUnity.Hierarchy
             var old = Enabled;
             Enabled = enabled;
             SaveWhenDifferent(old, Enabled);
+        }
+
+        private void SetRenderRootEdge(bool renderRootEdge)
+        {
+            var old = RenderRootEdge;
+            RenderRootEdge = renderRootEdge;
+            SaveWhenDifferent(old, RenderRootEdge);
         }
 
         private void SetEdgeWidth(float edgeWidth)

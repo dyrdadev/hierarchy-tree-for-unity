@@ -8,9 +8,10 @@ namespace DyrdaDev.ForUnity.Hierarchy
     {
         private enum EdgeType
         {
-            middleChild,
-            lastChild,
-            sibling
+            MiddleChild,
+            LastChild,
+            Sibling,
+            Root
         }
 
         static HierarchyTree()
@@ -63,20 +64,32 @@ namespace DyrdaDev.ForUnity.Hierarchy
                 GetColor(highlighted));
         }
 
-        private static void DrawHierarchyEdge(EdgeType edgeType, bool highlighted, int graphDistance, Rect rect)
+        private static void DrawHierarchyEdge(EdgeType edgeType, bool highlighted, bool extendedLine, int graphDistance, Rect rect)
         {
             switch (edgeType)
             {
-                case EdgeType.sibling:
+                case EdgeType.Sibling:
                     DrawFullVerticalEdgeSegment(rect, graphDistance, highlighted);
                     break;
-                case EdgeType.lastChild:
+                case EdgeType.LastChild:
                     DrawHalfVerticalEdgeSegment(rect, graphDistance, highlighted);
                     DrawHorizontalEdgeSegment(rect, graphDistance, highlighted);
+                    if(extendedLine){
+                        DrawExtendingHorizontalEdgeSegment(rect, graphDistance-1, highlighted);
+                    }
                     break;
-                case EdgeType.middleChild:
+                case EdgeType.MiddleChild:
                     DrawFullVerticalEdgeSegment(rect, graphDistance, highlighted);
                     DrawHorizontalEdgeSegment(rect, graphDistance, highlighted);
+                    if(extendedLine){
+                        DrawExtendingHorizontalEdgeSegment(rect, graphDistance-1, highlighted);
+                    }
+                    break;
+                case EdgeType.Root:
+                    DrawHorizontalEdgeSegment(rect, graphDistance, highlighted);
+                    if(extendedLine){
+                        DrawExtendingHorizontalEdgeSegment(rect, graphDistance-1, highlighted);
+                    }
                     break;
             }
         }
@@ -91,24 +104,21 @@ namespace DyrdaDev.ForUnity.Hierarchy
 
             if (go != null)
             {
+                bool hasChildren = go.transform.childCount > 0;
+                
                 // Draw children
                 if (go.transform.parent != null)
                 {
                     bool isHighlighted = Selection.activeTransform != null
                         && go.transform.parent.IsChildOf(Selection.activeTransform);
                     EdgeType edgeType = go.transform.GetSiblingIndex() < go.transform.parent.childCount - 1 
-                        ? EdgeType.middleChild : EdgeType.lastChild;
+                        ? EdgeType.MiddleChild : EdgeType.LastChild;
 
-                    DrawHierarchyEdge(edgeType, isHighlighted, 0, selectionRect);
+                    DrawHierarchyEdge(edgeType, isHighlighted, !hasChildren, 0, selectionRect);
 
-                    if (go.transform.childCount == 0)
-                    {
-                        DrawExtendingHorizontalEdgeSegment(selectionRect, -1, isHighlighted);
-                    }
 
-                    var referenceTransform = go.transform.parent;
                     var currentDistance = 1;
-
+                    var referenceTransform = go.transform.parent;
                     // Draw ancestors with open sibling relations
                     while (referenceTransform.parent != null)
                     {
@@ -117,12 +127,18 @@ namespace DyrdaDev.ForUnity.Hierarchy
                             isHighlighted = Selection.activeTransform != null
                                 && referenceTransform.parent.IsChildOf(Selection.activeTransform);
 
-                            DrawHierarchyEdge(EdgeType.sibling, isHighlighted, currentDistance, selectionRect);
+                            DrawHierarchyEdge(EdgeType.Sibling, isHighlighted, false, currentDistance, selectionRect);
                         }
 
                         referenceTransform = referenceTransform.parent;
                         currentDistance++;
                     }
+                    
+                }else if (HierarchyTreeSettings.instance.RenderRootEdge)
+                {
+                    bool isHighlighted = Selection.activeTransform != null
+                        && (Selection.activeTransform.IsChildOf(go.transform) || go.transform == Selection.activeTransform);
+                    DrawHierarchyEdge(EdgeType.Root, isHighlighted, !hasChildren, 0, selectionRect);
                 }
             }
         }
